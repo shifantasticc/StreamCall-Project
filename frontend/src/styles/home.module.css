@@ -1,0 +1,169 @@
+.HomeContainer {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  box-sizing: border-box;
+  background: #1a1b26;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+  background: #24283b;
+  top: 0;
+  z-index: 100;
+}
+
+.logo h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #d4d9f1;
+}
+
+.navIcons {
+  display: flex;
+  align-items: center;
+}
+
+.navIcons p {
+  font-size: 1rem;
+  color: #d4d9f1;
+}
+
+.navIcons button {
+  border-radius: 8px !important;
+  margin-left: 1rem;
+  transition: background 0.3s ease;
+}
+
+.navIcons button:hover {
+  background: #f0f0f0 !important;
+}
+
+.meetContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 20px;
+  height: 60vh;
+  gap: 5rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.leftPanel {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.leftPanel h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #d4d9f1;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.leftPanel :global(.MuiTextField-root) {
+  background-color: #3c3f5c;
+  border-radius: 0.6rem;
+}
+
+.leftPanel :global(.MuiInputBase-input) {
+  color: #d4d9f1; /* Input text color */
+}
+
+.leftPanel :global(.MuiInputLabel-root) {
+  color: #d7dcec; /* Label muted */
+}
+
+.leftPanel :global(.MuiButton-contained) {
+  background-color: #5293cf;
+  color: #1a1b26;
+  font-weight: 600;
+  border-radius: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.leftPanel :global(.MuiButton-contained:hover) {
+  background-color: #87b7e4;
+  transform: scale(1.05);
+}
+
+.leftPanel .MuiTextField-root {
+  min-width: 220px;
+}
+
+.rightPanel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightPanel > img {
+  max-width: 100%;
+  width: 28vw;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.rightPanel > img:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 1024px) {
+  .meetContainer {
+    gap: 3rem;
+    height: auto;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .rightPanel > img {
+    width: 50vw;
+  }
+
+  .leftPanel {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .meetContainer {
+    gap: 2rem;
+  }
+
+  .rightPanel > img {
+    width: 80%;
+  }
+
+  .leftPanel h2 {
+    font-size: 1.4rem;
+  }
+}
