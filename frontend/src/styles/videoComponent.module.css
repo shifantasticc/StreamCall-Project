@@ -1,15 +1,16 @@
 .meetVideoContainer {
   position: relative;
   height: 100vh;
-  background-color: rgb(19, 19, 19);
+  background-color: #171b22;
 }
 
 .meetUserVideo {
   position: absolute;
   bottom: 10vh;
-  height: 20vh;
+  height: 25vh;
   width: auto;
   left: 0;
+  margin-left: 3rem;
   border-radius: 20px;
 }
 
@@ -21,34 +22,55 @@
 }
 
 .buttonContainers svg {
-  font-size: 2.5rem;
+  background-color: #272c35;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.1rem;
+  font-size: 3rem;
 }
 
 .conferenceView {
   display: flex;
-  padding: 10px;
-  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  gap: 2rem;
 }
 
 .conferenceView video {
   width: 40vw;
-  height: 20vh;
+  height: 50vh;
   min-width: 30vw;
-  border-radius: 10px;
+  /* border-radius: 1rem; */
+}
+
+.chatContainer h1 {
+  background-color: #272c35;
+  text-align: center;
+  position: fixed;
+}
+
+.chattingDisplay {
+  text-align: left;
+  padding: 0.3rem;
+  border-radius: 0.5rem;
 }
 
 .chatRoom {
   position: absolute;
+  overflow: scroll;
   right: 0;
-  height: 90vh;
+  height: 95vh;
   width: 25vw;
-  bottom: 10vh;
-  background-color: rgb(43, 43, 44);
+  bottom: 2vh;
+  background-color: #272c35;
   color: #fff;
-  border-radius: 10px;
-  padding-inline: 20px;
+  border-radius: 0.5rem;
+  padding-inline: 1rem;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
 
-  transition: transform 0.2s  ease-out, opacity 0.2s  ease-out;
+.chatRoom::-webkit-scrollbar {
+  display: none;
 }
 
 .close {
@@ -66,11 +88,93 @@
 }
 
 .chattingArea {
-  position: absolute;
-  bottom: 0;
-  padding-bottom: 1rem;
+  position: fixed;
+  bottom: 2vh;
+  padding: 1em 0rem 1rem 0rem;
+  background-color: #272c35;
 }
 
-.chattingDispaly {
-  
+.chattingArea .sendMsg {
+  margin-left: 0.7rem;
+  margin-top: 0.5rem;
+}
+
+.chattingArea .writeMsg {
+  background-color: #2a303b;
+}
+
+.sendMsg:hover {
+  background-color: #fff;
+  color: #171b22;
+  font-weight: bolder;
+}
+
+.LobbyContainer {
+  height: 100vh;
+  width: 100vw;
+  background: #1a1b26; /* Smooth dark gradient */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  text-align: center;
+}
+
+.lobbyBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+  height: 85vh;
+  width: 50vw;
+  background-color: #24283b !important;
+  padding: 2rem;
+  border-radius: 2rem;
+}
+
+.LobbyContainer h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #5293cf;
+  letter-spacing: 1px;
+}
+
+.LobbyContainer :global(.MuiTextField-root) {
+  background-color: #3c3f5c;
+  border-radius: 0.6rem;
+}
+
+.LobbyContainer :global(.MuiInputBase-input) {
+  color: #d4d9f1; /* Input text color */
+}
+
+.LobbyContainer :global(.MuiInputLabel-root) {
+  color: #d7dcec; /* Label muted */
+}
+
+.LobbyContainer :global(.MuiButton-contained) {
+  background-color: #5293cf;
+  color: #1a1b26;
+  font-weight: 600;
+  border-radius: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.LobbyContainer :global(.MuiButton-contained:hover) {
+  background-color: #87b7e4;
+  transform: scale(1.05);
+}
+
+.LobbyContainer video {
+  width: 300px;
+  height: 200px;
+  border-radius: 1rem;
+  border: 2px solid #5293cf;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  object-fit: cover;
 }
