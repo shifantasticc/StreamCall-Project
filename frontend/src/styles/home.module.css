@@ -19,7 +19,7 @@
   padding: 1rem 2rem;
   max-width: 1200px;
   margin: auto;
-  background: #24283b;
+  background: #0c30e4;
   top: 0;
   z-index: 100;
 }
@@ -128,6 +128,29 @@
 
 .rightPanel > img:hover {
   transform: scale(1.02);
+}
+
+/* HISTORY */
+.historyContainer {
+  width: 100%;
+  min-height: 100vh;
+  gap: 2rem;
+  box-sizing: border-box;
+  background: #1a1b26;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.historyCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: auto;
+}
+
+.cardContent {
+  background-color: #b3cae7;
+  border: 2px solid #2686e0;
 }
 
 @media (max-width: 1024px) {

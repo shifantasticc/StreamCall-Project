@@ -1,125 +1,207 @@
+:root {
+  --bg-dark: #171b22;
+  --bg-panel: #1e2430;
+  --accent: #5293cf;
+  --light-text: #d4d9f1;
+  --muted-text: #9ba3b8;
+  --btn-hover: #87b7e4;
+  --border-soft: rgba(255, 255, 255, 0.1);
+  --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+body {
+  background-color: var(--bg-dark);
+  font-family: 'Poppins', 'Segoe UI', Roboto, sans-serif;
+  color: var(--light-text);
+  overflow: hidden;
+}
+
+/* MEETING VIDEO CONTAINER */
 .meetVideoContainer {
   position: relative;
   height: 100vh;
-  background-color: #171b22;
+  background: linear-gradient(180deg, #12151d, #171b22);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
 }
 
+/* USER VIDEO PREVIEW */
 .meetUserVideo {
   position: absolute;
   bottom: 10vh;
-  height: 25vh;
-  width: auto;
-  left: 0;
-  margin-left: 3rem;
+  left: 3rem;
+  height: 30vh;
+  width: 20vw;
   border-radius: 20px;
+  border: 2px solid var(--accent);
+  object-fit: cover;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+}
+.meetUserVideo:hover {
+  transform: scale(1.02);
 }
 
+/* BUTTON CONTAINER (Controls) */
 .buttonContainers {
   position: absolute;
-  width: 100vw;
-  bottom: 0;
+  bottom: 2vh;
+  width: 100%;
   text-align: center;
+  z-index: 10;
 }
 
 .buttonContainers svg {
-  background-color: #272c35;
+  background-color: var(--bg-panel);
   border-radius: 1rem;
   padding: 0.5rem;
-  margin: 0.1rem;
-  font-size: 3rem;
+  margin: 0.3rem;
+  font-size: 2.8rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
+.buttonContainers svg:hover {
+  background-color: var(--accent);
+  transform: scale(1.15);
+  color: #10141c !important;
+}
+
+/* CONFERENCE VIEW (All videos) */
 .conferenceView {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   padding-top: 1rem;
   gap: 2rem;
+  height: 80vh;
+  overflow-y: auto;
 }
 
 .conferenceView video {
-  width: 40vw;
+  width: 35vw;
   height: 50vh;
-  min-width: 30vw;
-  /* border-radius: 1rem; */
+  min-width: 280px;
+  border-radius: 1rem;
+  border: 2px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+/* When more than 2 videos */
+.shrink video {
+  width: 30vw;
+  height: 35vh;
+}
+
+/* CHAT BOX STYLING */
+.chatRoom {
+  position: absolute;
+  right: 0;
+  top: 0.5vh;
+  height: 85vh;
+  width: 25vw;
+  background: linear-gradient(180deg, #222734, #171b22);
+  color: var(--light-text);
+  border-radius: 1rem 0 0 1rem;
+  padding: 1.2rem;
+  overflow-y: scroll;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-soft);
+}
+
+.chatRoom::-webkit-scrollbar {
+  width: 0;
 }
 
 .chatContainer h1 {
-  background-color: #272c35;
+  position: sticky;
+  top: 0;
   text-align: center;
-  position: fixed;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  color: var(--light-text);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
 }
 
 .chattingDisplay {
   text-align: left;
-  padding: 0.3rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
+  background-color: #1e2430;
+  height: 55vh;
+  overflow-y: auto;
+  scrollbar-color: var(--accent) transparent;
+  scrollbar-width: thin;
 }
 
-.chatRoom {
-  position: absolute;
-  overflow: scroll;
-  right: 0;
-  height: 95vh;
-  width: 25vw;
-  bottom: 2vh;
-  background-color: #272c35;
-  color: #fff;
-  border-radius: 0.5rem;
-  padding-inline: 1rem;
-  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+.chattingArea :global(.MuiInputBase-input) {
+  color: #d4d9f1; /* Input text color */
 }
 
-.chatRoom::-webkit-scrollbar {
-  display: none;
+.chattingArea :global(.MuiInputLabel-root) {
+  color: #d7dcec; /* Label muted */
 }
 
-.close {
-  opacity: 0;
-}
-
-.open {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-.chatContainer {
-  position: relative;
-  height: 100%;
+.chattingDisplay p {
+  margin: 0.3rem 0;
 }
 
 .chattingArea {
   position: fixed;
   bottom: 2vh;
-  padding: 1em 0rem 1rem 0rem;
-  background-color: #272c35;
-}
-
-.chattingArea .sendMsg {
-  margin-left: 0.7rem;
-  margin-top: 0.5rem;
+  right: 1.5vw;
+  width: 23vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1e2430;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-soft);
 }
 
 .chattingArea .writeMsg {
   background-color: #2a303b;
+  border-radius: 0.5rem;
+  flex: 1;
+}
+
+.chattingArea .sendMsg {
+  margin-left: 0.8rem;
+  transition: all 0.3s ease;
 }
 
 .sendMsg:hover {
-  background-color: #fff;
-  color: #171b22;
-  font-weight: bolder;
+  background-color: var(--accent);
+  color: #10141c;
+  font-weight: 600;
+  transform: scale(1.05);
 }
 
+/* LOBBY STYLING */
 .LobbyContainer {
   height: 100vh;
   width: 100vw;
-  background: #1a1b26; /* Smooth dark gradient */
+  background: linear-gradient(180deg, #11141b, #1a1b26);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  font-family: 'Segoe UI', Roboto, sans-serif;
   text-align: center;
+  color: var(--light-text);
 }
 
 .lobbyBox {
@@ -127,54 +209,155 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1.8rem;
   text-align: center;
-  height: 85vh;
-  width: 50vw;
-  background-color: #24283b !important;
+  height: 80vh;
+  width: 45vw;
+  background-color: #24283b;
   padding: 2rem;
   border-radius: 2rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-soft);
+  transition: transform 0.3s ease;
+}
+
+.lobbyBox:hover {
+  transform: scale(1.02);
 }
 
 .LobbyContainer h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 600;
-  color: #5293cf;
+  color: var(--accent);
   letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(82, 147, 207, 0.5);
 }
 
+/* Material UI overrides inside lobby */
 .LobbyContainer :global(.MuiTextField-root) {
-  background-color: #3c3f5c;
+  background-color: #30344d;
   border-radius: 0.6rem;
+  width: 70%;
 }
 
 .LobbyContainer :global(.MuiInputBase-input) {
-  color: #d4d9f1; /* Input text color */
+  color: var(--light-text);
 }
 
 .LobbyContainer :global(.MuiInputLabel-root) {
-  color: #d7dcec; /* Label muted */
+  color: var(--muted-text);
 }
 
 .LobbyContainer :global(.MuiButton-contained) {
-  background-color: #5293cf;
+  background-color: var(--accent);
   color: #1a1b26;
   font-weight: 600;
   border-radius: 0.6rem;
-  padding: 0.6rem 1.2rem;
+  padding: 0.6rem 1.4rem;
   transition: all 0.3s ease;
 }
 
 .LobbyContainer :global(.MuiButton-contained:hover) {
-  background-color: #87b7e4;
+  background-color: var(--btn-hover);
   transform: scale(1.05);
 }
 
 .LobbyContainer video {
-  width: 300px;
-  height: 200px;
+  width: 320px;
+  height: 220px;
   border-radius: 1rem;
-  border: 2px solid #5293cf;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--accent);
+  box-shadow: var(--shadow-soft);
   object-fit: cover;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .lobbyBox {
+    width: 80vw;
+  }
+  .chatRoom {
+    width: 35vw;
+  }
+  .chattingArea {
+    position: sticky;
+    bottom: -1vh;
+    width: 31vw;
+    height: 13vh;
+  }
+  .chattingDisplay {
+    height: 55vh;
+    margin-bottom: 1rem;
+  }
+  .writeMsg {
+    height: 9vh;
+  }
+  .sendMsg {
+    height: 7.5vh;
+  }
+  .conferenceView video {
+    width: 25vw;
+    height: 35vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .meetUserVideo {
+    margin-bottom: 3rem;
+    width: 35vw;
+    height: 25vh;
+    /* display: none; */
+  }
+  .conferenceView video {
+    width: 80vw;
+    height: 45vh;
+  }
+  .lobbyBox {
+    width: 85vw;
+  }
+  .chatContainer h1 {
+    /* position: sticky; */
+    font-size: 1rem;
+  }
+  .chattingDisplay {
+    height: 35vh;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  .chatRoom {
+    /* position: fixed; */
+    top: 1vh;
+    width: 38vw;
+    height: 60vh;
+    border-radius: 1rem;
+  }
+  .chattingArea {
+    position: sticky;
+    bottom: -3vh;
+    width: 33vw;
+    height: 10vh;
+  }
+  .writeMsg {
+    height: 7vh;
+  }
+  .sendMsg {
+    height: 5.5vh;
+    width: 5.5vh;
+  }
+  .conferenceView video {
+    width: 25vw;
+    height: 30vh;
+  }
+}
+
+@media (max-width: 500px) {
+  .chatContainer h1 {
+    /* position: sticky; */
+    font-size: 0.8rem;
+  }
+  .conferenceView video {
+    width: 10vw;
+    height: 20vh;
+    gap: 0rem;
+  }
 }
