@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { AuthContext } from '../contexts/AuthContext.jsx';
 import { Snackbar } from '@mui/material';
+import styles from "../styles/authentication.module.css"
 
 
 
@@ -68,33 +69,26 @@ export default function Authentication() {
 
     return (
         <ThemeProvider theme={defaultTheme}>
-            <Grid container component="main" sx={{ height: '100vh' }}>
+            <Grid container component="main" sx={{ height: '100vh' }} className={styles.container}>
                 <CssBaseline />
                 <Grid
                     item
                     xs={false}
                     sm={4}
                     md={7}
-                    sx={{
-                        backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundColor: (t) =>
-                            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
                 />
-                <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                <Grid className={styles.MainBox} item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
                     <Box
+
                         sx={{
-                            my: 8,
+                            my: 2,
                             mx: 4,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
                         }}
                     >
-                        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                        <Avatar sx={{ m: 2, bgcolor: 'primary.main' }}>
                             <LockOutlinedIcon />
                         </Avatar>
 
@@ -108,8 +102,9 @@ export default function Authentication() {
                             </Button>
                         </div>
 
-                        <Box component="form" noValidate sx={{ mt: 1 }}>
+                        <Box component="form" noValidate sx={{ mt: 0 }}>
                             {formState === 1 ? <TextField
+                                className={styles.input}
                                 margin="normal"
                                 required
                                 fullWidth
@@ -122,6 +117,7 @@ export default function Authentication() {
                             /> : <></>}
 
                             <TextField
+                                className={styles.input}
                                 margin="normal"
                                 required
                                 fullWidth
@@ -134,6 +130,7 @@ export default function Authentication() {
 
                             />
                             <TextField
+                                className={styles.input}
                                 margin="normal"
                                 required
                                 fullWidth
